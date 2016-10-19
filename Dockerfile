@@ -4,7 +4,7 @@ ADD docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD docker/symfony.ini /usr/local/etc/php/conf.d/symfony.ini
 
 RUN apt-get update \
-        && apt-get install -y libicu-dev \
+        && apt-get install -y libicu-dev git \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
