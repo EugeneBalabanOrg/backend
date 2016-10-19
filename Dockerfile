@@ -17,6 +17,10 @@ RUN pecl install -f xdebug-2.4 \
 
 RUN docker-php-ext-install pdo pdo_mysql opcache intl && a2enmod rewrite
 
+
+WORKDIR /var/www/html
+RUN composer install
+
 ADD ["./", "/var/www/html"]
 
 RUN chmod -R 777 /var/www/html/var
