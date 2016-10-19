@@ -19,18 +19,12 @@ services:
             MYSQL_DATABASE: symfony
             MYSQL_USER: symfony
             MYSQL_PASSWORD: password
-    php:
-        build: ./docker/php-fpm
-        volumes:
-            - ./symfony:/var/www/symfony
-            - symfony_logs:/var/www/symfony/app/logs
-            - symfony_cache:/var/www/symfony/app/cache
-
-    nginx:
-        build: ./docker/nginx
+    php-fpm-nginx:
+        build: .
         ports:
             - 8080:80
-        volumes_from:
-            - php:ro
         volumes:
+            - .:/var/www/html
+            - symfony_logs:/var/www/symfony/app/logs
+            - symfony_cache:/var/www/symfony/app/cache
             - nginx_logs:/var/log/nginx

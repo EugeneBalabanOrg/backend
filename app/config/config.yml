@@ -65,11 +65,6 @@ fos_rest:
       view_response_listener: true
     serializer:
         serialize_null: true
-    body_converter:
-        enabled: true
-        format_listener:
-        rules:
-            - { path: '^/',  priorities: ['json'], fallback_format: json, exception_fallback_format: html, prefer_extension: true }
 
 jms_serializer:
     property_naming:
